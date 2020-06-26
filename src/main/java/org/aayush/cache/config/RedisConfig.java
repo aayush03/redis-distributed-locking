@@ -30,6 +30,10 @@ public class RedisConfig {
         logger.info("inside redis configure constructor");
     }
 
+    public static boolean isNullObject(Object obj) {
+        return (null == obj);
+    }
+
     @Bean
     @Primary
     public RedisConnectionFactory jedisConnectionFactory() {
@@ -44,7 +48,7 @@ public class RedisConfig {
                     if (null != node & node.contains(",")) {
                         hostAndPort = new HostAndPort(node);
                         logger.info(
-                                 "Host:Port::{}:{}" , hostAndPort.getHost() , hostAndPort.getPort());
+                                "Host:Port::{}:{}", hostAndPort.getHost(), hostAndPort.getPort());
                         redisSentinelConfiguration.sentinel(hostAndPort.getHost(), hostAndPort.getPort());
                     }
                 }
@@ -52,7 +56,7 @@ public class RedisConfig {
                 if (redisSentinelHostAndPorts.contains(",")) {
                     hostAndPort = new HostAndPort(redisSentinelHostAndPorts);
                     logger.info(
-                            "fallback Host:Port::{}:{}" ,hostAndPort.getHost() , hostAndPort.getPort());
+                            "fallback Host:Port::{}:{}", hostAndPort.getHost(), hostAndPort.getPort());
                     redisSentinelConfiguration.sentinel(hostAndPort.getHost(), hostAndPort.getPort());
                 }
             }
@@ -74,10 +78,6 @@ public class RedisConfig {
     @Bean
     public StringRedisSerializer stringRedisSerializer() {
         return new StringRedisSerializer();
-    }
-
-    public static boolean isNullObject(Object obj) {
-        return (null == obj);
     }
 
     private class HostAndPort {

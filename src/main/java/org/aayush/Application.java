@@ -17,7 +17,7 @@ import org.springframework.web.WebApplicationInitializer;
 @EnableAspectJAutoProxy
 @ComponentScan(basePackages = "org.aayush")
 @PropertySource("application.properties")
-public class Application  extends SpringBootServletInitializer implements WebApplicationInitializer {
+public class Application extends SpringBootServletInitializer implements WebApplicationInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

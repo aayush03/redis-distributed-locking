@@ -22,12 +22,10 @@ import java.util.concurrent.TimeUnit;
 @Service("cacheTemplate")
 public class CacheTemplateImpl implements CacheTemplate {
 
+    private final String PREFIX = ":";
     @Autowired
     @Qualifier("redisTemplate")
     private RedisTemplate redisTemplate;
-
-    private final String PREFIX = ":";
-
     private Logger logger = LoggerFactory.getLogger(CacheTemplateImpl.class);
 
 
