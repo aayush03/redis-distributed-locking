@@ -6,3 +6,8 @@ This has been built on top of the original article published on https://blog.pia
 This can be used to acquire distributed locks through Redis over a specific key across all sentinels using the SETNX command implementation of Redis and uses Java lambdas to combine multiple statements of releasing the distributed lock and converts this process into an atomic operation and ensures correctness of the unlocking operation by not deleting someone else's lock.
 
 Reference : https://redis.io/commands/setnx | https://developpaper.com/redis-distributed-lock/
+
+
+## Motivation
+
+Implement idempotecy across multiple transactions for possible duplicate requests received from external systems corresponding to the same transaction id in a distributed systems environment.
